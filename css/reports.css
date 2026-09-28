@@ -1,0 +1,117 @@
+.reports-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-6);
+}
+
+.reports-filters {
+  display: flex;
+  gap: var(--spacing-4);
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  margin-bottom: var(--spacing-6);
+  flex-wrap: wrap;
+  align-items: flex-end;
+  box-shadow: var(--shadow-sm);
+}
+
+.date-range {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.date-range span {
+  color: var(--text-secondary);
+}
+
+.reports-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-5);
+  margin-bottom: var(--spacing-6);
+}
+
+.report-template-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-6);
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-md);
+}
+
+.report-template-card:hover {
+  border-color: var(--border-glow);
+  box-shadow: var(--shadow-lg), 0 0 20px rgba(99, 102, 241, 0.15);
+  transform: translateY(-4px);
+}
+
+.report-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: rgba(99, 102, 241, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--primary-accent);
+  margin-bottom: var(--spacing-4);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  transition: all var(--transition-fast);
+}
+
+.report-template-card:hover .report-icon {
+  background: var(--gradient-brand);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+}
+
+.report-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.report-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-5);
+  flex: 1;
+  line-height: 1.5;
+}
+
+.report-actions {
+  display: flex;
+  gap: var(--spacing-3);
+  margin-top: auto;
+}
+.report-actions .btn {
+  flex: 1;
+}
+
+.report-preview-modal {
+  max-width: 900px;
+}
+.report-preview {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  color: var(--text-primary);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  max-height: 60vh;
+  overflow-y: auto;
+}
+.report-preview-header {
+  text-align: center;
+  margin-bottom: var(--spacing-6);
+}
