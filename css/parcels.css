@@ -1,0 +1,197 @@
+.parcels-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-6);
+}
+
+.parcels-toolbar {
+  display: flex;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+  flex-wrap: wrap;
+  align-items: center;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  padding: 16px;
+  border-radius: var(--radius-lg);
+}
+
+.parcels-toolbar .search-box {
+  flex: 1;
+  min-width: 240px;
+}
+
+.parcels-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-md);
+}
+
+.parcel-id {
+  font-family: 'Courier New', monospace;
+  color: var(--primary-accent);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.parcel-id:hover {
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+.parcel-detail-panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 480px;
+  height: 100vh;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-left: 1px solid var(--border-subtle);
+  z-index: var(--z-parcel-panel);
+  transform: translateX(100%);
+  transition: transform var(--transition-normal);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+.parcel-detail-panel.open {
+  transform: translateX(0);
+}
+
+.parcel-detail-header {
+  padding: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-tertiary);
+}
+
+.parcel-detail-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.parcel-detail-body {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.parcel-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+  background: var(--bg-tertiary);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.parcel-info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.parcel-info-label {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.parcel-info-value {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.parcel-timeline {
+  position: relative;
+  padding-left: 24px;
+  margin-top: 16px;
+}
+
+.parcel-timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: var(--border-strong);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 2px solid var(--primary-accent);
+  z-index: 2;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
+}
+
+.timeline-item.completed::before {
+  background: var(--accent-emerald);
+  border-color: var(--accent-emerald);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.timeline-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+
+.timeline-title {
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.land-type-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.land-type-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.land-type-agri .land-type-dot { background-color: var(--accent-emerald); box-shadow: 0 0 8px rgba(16, 185, 129, 0.4); }
+.land-type-comm .land-type-dot { background-color: var(--primary-accent); box-shadow: 0 0 8px rgba(99, 102, 241, 0.4); }
+.land-type-resi .land-type-dot { background-color: var(--accent-amber); box-shadow: 0 0 8px rgba(245, 158, 11, 0.4); }
+
+@media (max-width: 768px) {
+  .parcel-detail-panel {
+    width: 100%;
+  }
+}
