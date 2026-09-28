@@ -20,6 +20,14 @@ window.Auth = {
   _dropdownCloseHandler: null,
 
   init() {
+    const savedUser = localStorage.getItem('nlams_current_user');
+    if (savedUser) {
+      try {
+        this.currentUser = JSON.parse(savedUser);
+      } catch (e) {
+        this.currentUser = null;
+      }
+    }
     this.renderHeaderWidget();
     this.setupAuthModal();
   },
@@ -229,6 +237,9 @@ window.Auth = {
   },
 
   redirectToDashboard(message, type = 'success') {
+    if (this.currentUser) {
+      localStorage.setItem('nlams_current_user', JSON.stringify(this.currentUser));
+    }
     this.closeAuthModal();
     this.removeProfileDropdown();
     this.renderHeaderWidget();
@@ -243,14 +254,15 @@ window.Auth = {
 
   logout() {
     this.removeProfileDropdown();
-    this.currentUser = null; // Reset to unauthenticated state
+    this.currentUser = null;
+    localStorage.removeItem('nlams_current_user');
     this.renderHeaderWidget();
     window.location.hash = 'auth';
     if (window.App && typeof App.navigateTo === 'function') {
       App.navigateTo('auth', true);
     }
     if (window.App && window.App.showToast) {
-      App.showToast('You have logged out. Redirected to Login Page.', 'info');
+      App.showToast('Logged out. Please log in to access the system.', 'info');
     }
   },
 
