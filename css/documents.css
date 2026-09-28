@@ -1,0 +1,113 @@
+.documents-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-6);
+}
+
+.documents-toolbar {
+  display: flex;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+  flex-wrap: wrap;
+}
+
+.upload-zone {
+  border: 2px dashed var(--border-glow);
+  border-radius: var(--radius-xl);
+  padding: 36px 24px;
+  text-align: center;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  margin-bottom: var(--spacing-6);
+  box-shadow: var(--shadow-sm);
+}
+
+.upload-zone:hover, .upload-zone.dragover {
+  border-color: var(--primary-accent);
+  background: rgba(99, 102, 241, 0.06);
+  box-shadow: 0 0 24px rgba(99, 102, 241, 0.2);
+  transform: translateY(-2px);
+}
+
+.upload-icon {
+  font-size: 2.8rem;
+  color: var(--primary-accent);
+  margin-bottom: var(--spacing-3);
+}
+
+.upload-text {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.upload-subtext {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.documents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-5);
+}
+
+.document-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-5);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+  box-shadow: var(--shadow-sm);
+}
+
+.document-card:hover {
+  border-color: var(--border-glow);
+  box-shadow: var(--shadow-md), 0 0 16px rgba(99, 102, 241, 0.15);
+  transform: translateY(-2px);
+}
+
+.document-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--primary-accent);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  flex-shrink: 0;
+}
+
+.document-info {
+  flex: 1;
+  overflow: hidden;
+}
+
+.document-name {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.document-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
