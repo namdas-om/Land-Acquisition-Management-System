@@ -123,11 +123,52 @@ window.App = {
     }
   },
   
+  // Update UI layout based on auth state (hide sidebar/header when unauthenticated)
+  updateLayoutForAuth(isLoggedIn) {
+    const sidebar = document.getElementById('sidebar');
+    const topHeader = document.querySelector('.top-header');
+    const govtStrip = document.querySelector('.govt-header-strip');
+    const mainContent = document.getElementById('mainContent');
+    const controlDock = document.getElementById('controlDock') || document.querySelector('.floating-dock');
+
+    if (!isLoggedIn) {
+      if (sidebar) sidebar.style.display = 'none';
+      if (topHeader) topHeader.style.display = 'none';
+      if (govtStrip) govtStrip.style.display = 'none';
+      if (controlDock) controlDock.style.display = 'none';
+      if (mainContent) {
+        mainContent.style.marginLeft = '0';
+        mainContent.style.padding = '0';
+        mainContent.style.maxWidth = '100%';
+        mainContent.style.width = '100%';
+      }
+    } else {
+      if (sidebar) sidebar.style.display = '';
+      if (topHeader) topHeader.style.display = '';
+      if (govtStrip) govtStrip.style.display = '';
+      if (controlDock) controlDock.style.display = '';
+      if (mainContent) {
+        mainContent.style.marginLeft = '';
+        mainContent.style.padding = '';
+        mainContent.style.maxWidth = '';
+        mainContent.style.width = '';
+      }
+    }
+  },
+
   // Navigate to a module
   navigateTo(moduleName, updateHash = true) {
     if (!this.modules.includes(moduleName)) return;
     
+    // Auth Guard: If not logged in, force navigation to 'auth'
+    const isAuthenticated = Boolean(window.Auth && Auth.currentUser);
+    if (!isAuthenticated && moduleName !== 'auth') {
+      moduleName = 'auth';
+      updateHash = true;
+    }
+
     this.currentModule = moduleName;
+    this.updateLayoutForAuth(isAuthenticated && moduleName !== 'auth');
     
     // Update active sidebar item
     document.querySelectorAll('.sidebar-nav a[data-module]').forEach(item => {
