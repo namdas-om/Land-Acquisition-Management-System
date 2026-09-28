@@ -1,0 +1,106 @@
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-5);
+  margin-bottom: var(--spacing-6);
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-5);
+  margin-bottom: var(--spacing-6);
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-5);
+  margin-bottom: var(--spacing-6);
+}
+.chart-container.span-2 {
+  grid-column: span 2;
+}
+.chart-container {
+  position: relative;
+  min-height: 300px;
+  padding: var(--spacing-4);
+}
+
+.activity-feed {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: var(--spacing-2);
+}
+.activity-item {
+  display: flex;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background-color var(--transition-fast);
+}
+.activity-item:last-child {
+  border-bottom: none;
+}
+.activity-item:hover {
+  background-color: rgba(255,255,255,0.02);
+  border-radius: var(--radius-md);
+}
+.activity-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.activity-icon.info { background: rgba(0, 0, 0, 0.06); color: var(--text-primary); }
+.activity-icon.success { background: rgba(0, 0, 0, 0.08); color: var(--text-secondary); }
+.activity-icon.warning { background: rgba(0, 0, 0, 0.06); color: var(--text-muted); }
+.activity-icon.danger { background: rgba(0, 0, 0, 0.08); color: var(--text-primary); }
+
+.activity-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.activity-title {
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  margin-bottom: 4px;
+}
+.activity-desc {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  margin-bottom: 6px;
+}
+.activity-time {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.kpi-trend {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: var(--spacing-2);
+}
+.kpi-trend.up { color: var(--text-primary); }
+.kpi-trend.down { color: var(--text-muted); }
+.kpi-trend svg { width: 12px; height: 12px; margin-right: 4px; }
+
+@media (max-width: 1024px) {
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .kpi-grid, .charts-grid {
+    grid-template-columns: 1fr;
+  }
+  .chart-container.span-2 {
+    grid-column: span 1;
+  }
+}
